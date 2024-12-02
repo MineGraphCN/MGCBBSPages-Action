@@ -6,10 +6,10 @@ import archiver from "archiver";
 
 async function main() {
     const server = core.getInput("server", {required: true})
-    const appId = core.getInput("app-id", {required: true})
-    const appKey = core.getInput("app-secret", {required: true})
+    const appId = core.getInput("app_id", {required: true})
+    const appKey = core.getInput("app_secret", {required: true})
 
-    let target = core.getInput("target", {required: true})
+    let target = core.getInput("target_file", {required: true})
 
     let stat = await fs.promises.stat(target)
     if (stat.isDirectory()) {

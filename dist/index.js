@@ -44513,9 +44513,9 @@ var crypto = __toESM(require("node:crypto"));
 var import_archiver = __toESM(require_archiver());
 async function main() {
   const server = import_core.default.getInput("server", { required: true });
-  const appId = import_core.default.getInput("app-id", { required: true });
-  const appKey = import_core.default.getInput("app-secret", { required: true });
-  let target = import_core.default.getInput("target", { required: true });
+  const appId = import_core.default.getInput("app_id", { required: true });
+  const appKey = import_core.default.getInput("app_secret", { required: true });
+  let target = import_core.default.getInput("target_file", { required: true });
   let stat = await fs.promises.stat(target);
   if (stat.isDirectory()) {
     target = await zipFolder(target);
