@@ -1,0 +1,20 @@
+name: 'MGC Pages Deploy'
+description: 'MGC Pages 部署工具包'
+
+inputs:
+  server:
+    description: '提供您的 Server'
+    required: true
+  app_id:
+    description: '提供您的 Pages App ID'
+    required: true
+  app_secret:
+    description: '提供您的 Pages App Secret'
+    required: true
+  target_file:
+    description: '目标文件，接受单个文件或是一个文件夹'
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'index.js'

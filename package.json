@@ -1,0 +1,21 @@
+{
+    "name": "mac-pages-action",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "esbuild src/index.ts --bundle --platform=node --target=node20 --outfile=dist/index.js",
+        "run": "tsc && node dist/index.js"
+    },
+    "dependencies": {
+        "@actions/core": "^1.11.1",
+        "@actions/http-client": "^2.2.3",
+        "@types/archiver": "^6.0.3",
+        "@types/node": "^22.10.1",
+        "archiver": "^7.0.1",
+        "esbuild": "^0.24.0"
+    },
+    "devDependencies": {
+        "typescript": "^5.5.3"
+    }
+}
