@@ -1,15 +1,14 @@
-import core from "@actions/core";
 import {HttpClient} from "@actions/http-client";
 import * as fs from "node:fs";
 import * as crypto from "node:crypto";
 import archiver from "archiver";
 
 async function main() {
-    const server = core.getInput("server", {required: true})
-    const appId = core.getInput("app_id", {required: true})
-    const appKey = core.getInput("app_secret", {required: true})
+    const server = getInput("server", {required: true})
+    const appId = getInput("app_id", {required: true})
+    const appKey = getInput("app_secret", {required: true})
 
-    let target = core.getInput("target_file", {required: true})
+    let target = getInput("target_file", {required: true})
 
     let stat = await fs.promises.stat(target)
     if (stat.isDirectory()) {
@@ -79,3 +78,14 @@ main().catch(e => {
     console.error(e)
     process.exit(1)
 })
+
+function getInput(name: string, options: { required?: boolean, trimWhitespace?: boolean } = {}): string {
+    const val = process.env[`INPUT_${name.replace(/ /g, "_").toUpperCase()}`] || "";
+    if (options && options.required && !val) {
+        throw new Error(`Input required and not supplied: ${name}`);
+    }
+    if (options && options.trimWhitespace === false) {
+        return val;
+    }
+    return val.trim();
+}
