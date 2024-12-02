@@ -75,4 +75,7 @@ function sha2Text(text: string) {
     return crypto.createHash('sha256').update(text).digest('hex')
 }
 
-main().catch(e => core.setFailed(e.message))
+main().catch(e => {
+    console.error(e)
+    process.exit(1)
+})

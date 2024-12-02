@@ -44569,7 +44569,10 @@ function sha2File(file) {
 function sha2Text(text) {
   return crypto.createHash("sha256").update(text).digest("hex");
 }
-main().catch((e) => import_core.default.setFailed(e.message));
+main().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});
 /*! Bundled license information:
 
 undici/lib/fetch/body.js:
